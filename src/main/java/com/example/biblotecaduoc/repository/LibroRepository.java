@@ -62,13 +62,62 @@ public class LibroRepository {
 
     // Actualizar Libro 
     
-    public Libro actualizar(libro lib){
+    public Libro actualizar(Libro lib) {
         int id = 0;
         int idPosicion = 0;
         
 
-        for (int i = 0; i <ArrayLibros.size)();
+        for (int i = 0; i <listaLibros.size(); i++ ) {
+
+            if (listaLibros.get(i).getId() == lib.getId()) {
+
+                id = lib.getId();
+                idPosicion = i;
+            }
+        }
+
+        Libro libro1 = new Libro();
+        libro1.setId(id);
+        libro1.setTitulo(lib.getTitulo());
+        libro1.setAutor(lib.getAutor());
+        libro1.setFechaPublicacion(lib.getFechaPublicacion());
+        libro1.setEditorial(lib.getEditorial());
+        libro1.setIsbn(lib.getIsbn());
+
+        listaLibros.set(idPosicion, libro1);
+
+        return libro1;
+
     }
+
+    public void eliminar (int id) {
+
+        //alternativa 1 
+        Libro  libro = buscarporId(id);
+        if (libro != null) {
+            listaLibros.remove(libro); 
+        }
+
+        //alternativa 2
+        int idPosicion = 0;
+        for (int i = 0; )
+
+
+
+
+
+
+
+    }
+  
+
+
+
+
+
+
+
+
 
     
 
