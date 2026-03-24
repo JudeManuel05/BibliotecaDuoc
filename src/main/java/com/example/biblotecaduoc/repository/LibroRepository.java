@@ -1,7 +1,7 @@
 package com.example.biblotecaduoc.repository;
 
 
-import com.example.biblotecaduoc.BiblotecaduocApplication;
+
 import com.example.biblotecaduoc.model.Libro;
 import org.springframework.stereotype.Repository;
 
@@ -13,16 +13,8 @@ import java.util.List;
 
 public class LibroRepository {
 
-
-
-    private final BiblotecaduocApplication biblotecaduocApplication;
     // Arreglo que guardara todos los libros
     private List<Libro> listaLibros = new ArrayList<>();
-
-
-    LibroRepository(BiblotecaduocApplication biblotecaduocApplication) {
-        this.biblotecaduocApplication = biblotecaduocApplication;
-    }
 
 
     // Metodo que retorna todos los libros 
@@ -100,28 +92,19 @@ public class LibroRepository {
 
         //alternativa 2
         int idPosicion = 0;
-        for (int i = 0; )
+        for (int i = 0; i < listaLibros.size(); i++){
 
+            if (listaLibros.get(i).getId() == i ) {
+                idPosicion  = i;
+                break;
+            }
+        }
+        if (idPosicion > 0) {
+            listaLibros.remove(idPosicion);
+        }
 
-
-
-
-
-
+        //otra alternativa 
+        listaLibros.removeIf( x -> x.getId() == id);
     }
-  
-
-
-
-
-
-
-
-
-
-    
-
-
-
 
 }
