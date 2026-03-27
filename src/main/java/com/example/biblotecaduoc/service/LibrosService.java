@@ -1,5 +1,4 @@
 package com.example.biblotecaduoc.service;
-
 import  com.example.biblotecaduoc.model.Libro;
 import  com.example.biblotecaduoc.repository.LibroRepository;
 import  org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import  java.util.List;
 @Service
 public class LibrosService {
 
+    
     @Autowired
     private LibroRepository LibroRepository;
 
@@ -40,6 +40,23 @@ public class LibrosService {
 
         LibroRepository.eliminar(id);
         return "Productor Eliminado";
+    }
+
+    public int totalLibrosV1(){
+        return LibroRepository.obtenLibros().size();
+    }
+
+    public int totalLibrosV2(){
+        return LibroRepository.totalLibros();
+    }
+
+    public String buscarPorIsbn (String isbn) {
+        Libro libro = LibroRepository.buscarporIsbn(isbn);
+        if (libro != null) {
+            return "Libro encontrado: " + libro.getTitulo() + " por " + libro.getAutor();
+        } else {
+            return "Libro no encontrado con ISBN: " + isbn;
+        }
     }
 
 
